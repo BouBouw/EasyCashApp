@@ -1,6 +1,7 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain  } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
+const si = require('systeminformation');
 
 let mainWindow;
 
@@ -18,6 +19,11 @@ function createWindow() {
     : `file://${path.join(__dirname, '../build/index.html')}`;
 
   mainWindow.loadURL(startURL);
+  // mainWindow.setMenu(null);
+
+  ipcMain.handle('get-disk-info', async () => {
+    return await si.diskLayout();
+  });
 
   mainWindow.on('closed', () => (mainWindow = null));
 }

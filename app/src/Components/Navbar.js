@@ -1,5 +1,3 @@
-import { Icon } from "../Addons/Icon"
-
 export const Navbar = () => {
     return(
         <nav className="bg-red-600 p-5 flex items-center">
