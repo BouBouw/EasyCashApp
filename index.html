@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+
+    <link href="./styles.css" rel="stylesheet">
+
+    <title>EasyCash • Computer Manager</title>
+
+    <script src="./renderer.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <span class="nav-title">Computer Manager</span>
+      </div>
+    </nav>
+    <section class="main-section">
+      <div class="device-controls">
+        <h1 id="computer-name"></h1>
+        <p id="computer-version"></p>
+      </div>
+      <div>
+        <ul class="options-controls">
+          <li>
+            <button class="windows-10-setup">
+              Windows 10
+            </button>
+          </li>
+          <li>
+            <button class="windows-11-setup">
+              Windows 11
+            </button>
+          </li>
+          <li>
+            <button class="drivers-setup">
+              Drivers
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="second-section">
+      <div class="cpu">
+        <img src="./assets/cpu.png" alt="cpu" class="cpu-image">
+        <div class="">
+          <div class="cpu-infos">
+            <h1 id="cpu-name"></h1>
+            <div class="cpu-ghz">
+              <span id="cpu-ghz-size"></span>
+            </div>
+          </div>
+          <div class="">
+            <p id="cpu-min-max"></p>
+            <p id="cpu-cores"></p>
+          </div>
+        </div>
+      </div>
+      <div class="ram">
+        <img src="./assets/ram.png" alt="cpu" class="disks-image">
+        <div class="">
+          <div class="ram-infos">
+            <h1 id="ram-uses"></h1>
+          </div>
+          <div class="ram-container"></div>
+        </div>
+      </div>
+      <div class="disks">
+        <img src="./assets/disks.png" alt="cpu" class="disks-image">
+        <div class="disks-container"></div>
+      </div>
+      <div class="gpu">
+        <img src="./assets/graphic.png" alt="cpu" class="gpu-image">
+        <div class="gpu-container"></div>
+      </div>
+    </section>
+  </body>
+</html>

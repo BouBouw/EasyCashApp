@@ -1,0 +1,97 @@
+.navbar {
+    background-color: red;
+    width: 100%;
+}
+
+.nav-container {
+    padding: 5px;
+}
+
+.item-container {
+    width: 500px;
+    margin-top: 20px;
+    padding: 5px;
+    background-color: rgb(138, 148, 148);
+    border-radius: 10px;
+    display: flex;
+}
+
+.main-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.device-controls h1 {
+    font-weight: bold;
+}
+
+.options-controls {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    align-items: center;   
+}
+
+.windows-10-setup {
+    width: 200px;
+    height: 50px;
+    background-color: #0078D6;
+    border: none;
+    border-radius: 5px;
+}
+.windows-10-setup:hover {
+    background-color: #2272af;
+}
+
+.windows-11-setup {
+    width: 200px;
+    height: 50px;
+    background-color: #4EB2FF;
+    border: none;
+    border-radius: 5px;
+}
+.windows-11-setup:hover {
+    background-color: rgb(67, 130, 179);
+}
+
+.drivers-setup {
+    width: 200px;
+    height: 50px;
+    background-color: #664EFF;
+    border: none;
+    border-radius: 5px;
+}
+
+.second-section {
+    margin-top: 100px;
+}
+
+.cpu-image, .disks-image, .gpu-image {
+    width: 50px;
+    height: 50px;
+}
+
+.cpu-infos, .ram-infos {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    align-items: center; 
+}
+
+.cpu-ghz {
+    color: black;
+    background-color: rgb(168, 168, 168);
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.disk-infos {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    align-items: center; 
+}
