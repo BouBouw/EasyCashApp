@@ -88,3 +88,12 @@ body {
     transform: scale(1.01);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
+
+.ram-content, .disk-content, .gpu-content {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    border: solid 1px rgb(122, 122, 122);
+    border-radius: 5px;
+}

@@ -7,7 +7,6 @@ async function getSystemInfo() {
         console.log(si)
         // Informations sur le CPU
         const cpu = await si.cpu();
-        console.log('CPU:', cpu);
         document.getElementById('cpu-name').innerHTML = `${cpu.brand}`;
         document.getElementById('cpu-ghz-size').innerHTML = `${cpu.speed} GHz`;
 
@@ -24,53 +23,69 @@ async function getSystemInfo() {
         // Informations sur la mémoire (RAM)
         const mem = await si.mem();
         const slots = await si.memLayout();
-        console.log('Mémoire (RAM):', mem);
-        console.log('Slots (RAM):', await si.memLayout())
-
-        // document.getElementById('ram-uses').innerHTML = `${(Math.floor(mem.total - mem.free) / 1073741824).toFixed(2)}/${(Math.floor(mem.total / 1073741824)).toFixed(2)} GB`;
 
         const ramContainer = document.querySelector('.ram-container');
         slots.forEach((memory, index) => {
-            const testDiv = document.createElement('div');
+            const container = document.createElement('div');
 
-            //  testDiv.textContent = `Ram: ${memory.manufacturer} • ${(Math.floor(memory.size / 1073741824)).toFixed(0)} GB`;
-            testDiv.textContent =  `${index + 1}. Modèle : ${memory.manufacturer}
-            Capacité : ${(Math.floor(memory.size / 1073741824)).toFixed(0)} Go\n
-            Type : ${memory.type}\n
-            Tension : ${memory.voltageConfigured}V
-            `
+            container.className = 'ram-content'
 
-            testDiv.style.padding = '10px';
-            testDiv.style.margin = '5px';
+            const model = document.createElement('span');
+            model.className = 'ram-model';
+            model.innerHTML  = `<b>Modèle :</b> ${memory.manufacturer}`
 
-            ramContainer.appendChild(testDiv);
+            const capacity = document.createElement('span');
+            capacity.className = 'ram-capacity';
+            capacity.innerHTML = `<b>Capacité :</b> ${(Math.floor(memory.size / 1073741824)).toFixed(0)} Go`
+
+            const type = document.createElement('span')
+            type.className = 'ram-type';
+            type.innerHTML = `<b>Type :</b> ${memory.type}`
+
+            const voltage = document.createElement('span');
+            voltage.className = 'ram-voltage';
+            voltage.innerHTML = `<b>Tension :</b> ${memory.voltageConfigured}V`
+
+            container.style.padding = '10px';
+            container.style.margin = '5px';
+
+            container.appendChild(model);
+            container.appendChild(capacity);
+            container.appendChild(type);
+            container.appendChild(voltage);
+
+            ramContainer.appendChild(container);
         })
 
         // Informations sur les disques (SSD, HDD)
         const diskLayout = await si.diskLayout();
         const disksContainer = document.querySelector('.disks-container');
-        console.log('Disques:', diskLayout);
         diskLayout.forEach((disk) => {
-            const diskContainer = document.createElement('div');
-            const diskInfos = document.createElement('div');
-            const testDiv = document.createElement('div')
+            const container = document.createElement('div');
 
-            diskContainer.className = 'disk-container';
-            diskInfos.className = 'disk-infos'
+            container.className = 'disk-content';
 
-            testDiv.textContent = `Disque: ${disk.name} • Size : ${(Math.floor(disk.size / 1073741824)).toFixed(2)} GB • Type : ${disk.interfaceType} | ${disk.type}`;
+            const name = document.createElement('span');
+            name.className = 'disk-name';
+            name.innerHTML = `<b>Disque :</b> ${disk.name}`;
 
-            testDiv.style.border = '1px solid #ccc';
-            testDiv.style.padding = '10px';
-            testDiv.style.margin = '5px';
-            testDiv.style.borderRadius = '5px';
-            testDiv.style.backgroundColor = '#f9f9f9';
+            const size = document.createElement('span');
+            size.className = 'disk-size';
+            size.innerHTML = `<b>Taille :</b> ${(Math.floor(disk.size / 1073741824)).toFixed(2)} GB`;
+
+            const type = document.createElement('span');
+            type.className = 'disk-type';
+            type.innerHTML = `<b>Type :</b> ${disk.interfaceType} | ${disk.type === 'SSD' ? disk.type : 'HDD' }`;
+
+            container.style.padding = '10px';
+            container.style.margin = '5px';
+
+            container.appendChild(name);
+            container.appendChild(size);
+            container.appendChild(type);
 
             // Ajoutez le div au conteneur existant
-            disksContainer.appendChild(diskContainer);
-            disksContainer.appendChild(diskInfos);
-            disksContainer.appendChild(testDiv);
-            console.log(disk)
+            disksContainer.appendChild(container);
         })
 
         const diskUsage = await si.fsSize();
@@ -82,21 +97,33 @@ async function getSystemInfo() {
 
         // Informations sur la carte graphique
         const graphics = await si.graphics();
-        console.log('Carte graphique:', graphics);
 
         const gpuContainer = document.querySelector('.gpu-container');
         graphics.controllers.forEach((gpu) => {
-            const testDiv = document.createElement('div');
+            const container = document.createElement('div');
 
-            testDiv.textContent = `${gpu.model} • ${Math.floor(gpu.memoryTotal).toString().charAt(0)} GB • VRAM : ${Math.floor(gpu.vram).toString().charAt(0)} GB`;
+            container.className = 'gpu-content';
 
-            testDiv.style.border = '1px solid #ccc';
-            testDiv.style.padding = '10px';
-            testDiv.style.margin = '5px';
-            testDiv.style.borderRadius = '5px';
-            testDiv.style.backgroundColor = '#f9f9f9';
+            const model = document.createElement('span');
+            model.className = 'gpu-model';
+            model.innerHTML = `<b>Modèle :</b> ${gpu.model}`;
 
-            gpuContainer.appendChild(testDiv);
+            const capacity = document.createElement('span');
+            capacity.className = 'gpu-capacity';
+            capacity.innerHTML = `<b>Capacité :</b> ${Math.floor(gpu.memoryTotal).toString().charAt(0)} GB`;
+
+            const vram = document.createElement('span');
+            vram.className = 'gpu-vram';
+            vram.innerHTML = `<b>Mémoire Virtuelle :</b> ${Math.floor(gpu.vram).toString().charAt(0)} GB`;
+
+            container.style.padding = '10px';
+            container.style.margin = '5px';
+
+            container.appendChild(model);
+            container.appendChild(capacity);
+            container.appendChild(vram);
+
+            gpuContainer.appendChild(container);
         })
 
         // Informations sur les périphériques
@@ -115,8 +142,19 @@ async function getSystemInfo() {
 
         const battery = await si.battery();
         console.log('Batterie:', battery);
-        if(battery.hasBattery) {
+        console.log(battery.hasBattery)
 
+        const batteryContainer = document.querySelector('.battery-container');
+        if(battery.hasBattery === true) {
+
+        } else {
+            const noBattery = document.createElement('span');
+            noBattery.className = 'battery-error';
+            noBattery.innerHTML = `<b>L'ordinateur ne possède pas de batterie</b>`;
+
+            // changer le msg
+
+            batteryContainer.appendChild(noBattery);
         }
 
         const bios = await si.bios();
