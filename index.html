@@ -41,39 +41,70 @@
         </ul>
       </div>
     </section>
-    <section class="second-section">
-      <div class="cpu">
-        <img src="./assets/cpu.png" alt="cpu" class="cpu-image">
-        <div class="">
-          <div class="cpu-infos">
-            <h1 id="cpu-name"></h1>
-            <div class="cpu-ghz">
-              <span id="cpu-ghz-size"></span>
-            </div>
-          </div>
+    <div class="container">
+      <section class="components-grid">
+        <div class="component-card">
           <div class="">
-            <p id="cpu-min-max"></p>
-            <p id="cpu-cores"></p>
+            <h2>Processeur (CPU)</h2>
           </div>
+          <p>
+            <strong>Modèle :</strong>
+            <span id="cpu-name"></span>
+          </p>
+          <p>
+            <strong>Fréquence :</strong> 
+            <span id="cpu-ghz-size"></span>
+             (Turbo Boost jusqu'à <span id="cpu-min-max"></span> GHz)
+          </p>
+          <p>
+            <strong>Nombre de Cœurs :</strong>
+            <span id="cpu-cores"></span> cœurs,
+            <span id="cpu-threads"></span> threads
+          </p>
+          <p>
+            <strong>Socket :</strong> 
+            <span id="cpu-socket"></span>
+          </p>
         </div>
-      </div>
-      <div class="ram">
-        <img src="./assets/ram.png" alt="cpu" class="disks-image">
-        <div class="">
-          <div class="ram-infos">
-            <h1 id="ram-uses"></h1>
+        <div class="component-card">
+          <div class="">
+            <h2>Mémoire (RAM)</h2>
           </div>
           <div class="ram-container"></div>
         </div>
-      </div>
-      <div class="disks">
-        <img src="./assets/disks.png" alt="cpu" class="disks-image">
-        <div class="disks-container"></div>
-      </div>
-      <div class="gpu">
-        <img src="./assets/graphic.png" alt="cpu" class="gpu-image">
-        <div class="gpu-container"></div>
-      </div>
-    </section>
+        <div class="component-card">
+          <div class="">
+            <h2>Disques</h2>
+          </div>
+          <div class="disks-container"></div>
+        </div>
+        <div class="component-card">
+          <div class="">
+            <h2>Carte Graphique</h2>
+          </div>
+          <div class="gpu-container"></div>
+        </div>
+        <div class="component-card">
+          <div class="">
+            <h2>Connectiques</h2>
+          </div>
+        </div>
+        <div class="component-card">
+          <div class="">
+            <h2>Périphériques</h2>
+          </div>
+        </div>
+        <div class="component-card">
+          <div class="">
+            <h2>Réseaux & Bluetooth</h2>
+          </div>
+        </div>
+        <div class="component-card">
+          <div class="">
+            <h2>Batterie</h2>
+          </div>
+        </div>
+      </section>
+    </div>
   </body>
 </html>

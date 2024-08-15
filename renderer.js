@@ -11,8 +11,11 @@ async function getSystemInfo() {
         document.getElementById('cpu-name').innerHTML = `${cpu.brand}`;
         document.getElementById('cpu-ghz-size').innerHTML = `${cpu.speed} GHz`;
 
-        document.getElementById('cpu-min-max').innerHTML = `Min : ${cpu.speedMin} GHz • Max : ${cpu.speedMax} GHz`;
-        document.getElementById('cpu-cores').innerHTML = `${cpu.cores} Cores (Physicals : ${cpu.physicalCores})`;
+        document.getElementById('cpu-min-max').innerHTML = `${cpu.speedMax}`;
+        document.getElementById('cpu-cores').innerHTML = `${cpu.cores}`;
+        document.getElementById('cpu-threads').innerHTML=`${cpu.physicalCores}`;
+
+        document.getElementById('cpu-socket').innerHTML=`${cpu.socket}`;
 
         // Utilisation du CPU
         const cpuUsage = await osu.cpu.usage();
@@ -24,19 +27,21 @@ async function getSystemInfo() {
         console.log('Mémoire (RAM):', mem);
         console.log('Slots (RAM):', await si.memLayout())
 
-        document.getElementById('ram-uses').innerHTML = `${(Math.floor(mem.total - mem.free) / 1073741824).toFixed(2)}/${(Math.floor(mem.total / 1073741824)).toFixed(2)} GB`;
+        // document.getElementById('ram-uses').innerHTML = `${(Math.floor(mem.total - mem.free) / 1073741824).toFixed(2)}/${(Math.floor(mem.total / 1073741824)).toFixed(2)} GB`;
 
         const ramContainer = document.querySelector('.ram-container');
-        slots.forEach((memory) => {
+        slots.forEach((memory, index) => {
             const testDiv = document.createElement('div');
 
-            testDiv.textContent = `Ram: ${memory.manufacturer} • ${(Math.floor(memory.size / 1073741824)).toFixed(0)} GB`;
+            //  testDiv.textContent = `Ram: ${memory.manufacturer} • ${(Math.floor(memory.size / 1073741824)).toFixed(0)} GB`;
+            testDiv.textContent =  `${index + 1}. Modèle : ${memory.manufacturer}
+            Capacité : ${(Math.floor(memory.size / 1073741824)).toFixed(0)} Go\n
+            Type : ${memory.type}\n
+            Tension : ${memory.voltageConfigured}V
+            `
 
-            testDiv.style.border = '1px solid #ccc';
             testDiv.style.padding = '10px';
             testDiv.style.margin = '5px';
-            testDiv.style.borderRadius = '5px';
-            testDiv.style.backgroundColor = '#f9f9f9';
 
             ramContainer.appendChild(testDiv);
         })
