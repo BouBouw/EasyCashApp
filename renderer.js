@@ -145,16 +145,19 @@ async function getSystemInfo() {
         console.log(battery.hasBattery)
 
         const batteryContainer = document.querySelector('.battery-container');
+        const card = document.getElementById('battery-card');
         if(battery.hasBattery === true) {
-
+            card.style.display = 'block';
         } else {
-            const noBattery = document.createElement('span');
-            noBattery.className = 'battery-error';
-            noBattery.innerHTML = `<b>L'ordinateur ne possède pas de batterie</b>`;
+            // card.style.display = 'none';
+
+            // const noBattery = document.createElement('span');
+            // noBattery.className = 'battery-error';
+            // noBattery.innerHTML = `<b>L'ordinateur ne possède pas de batterie</b>`;
 
             // changer le msg
 
-            batteryContainer.appendChild(noBattery);
+            // batteryContainer.appendChild(noBattery);
         }
 
         const bios = await si.bios();

@@ -97,3 +97,7 @@ body {
     border: solid 1px rgb(122, 122, 122);
     border-radius: 5px;
 }
+
+#battery-card {
+    display: none;
+}
