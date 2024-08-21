@@ -1,14 +1,68 @@
 body {
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
+main {
+    padding: 15px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+   
+::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 10px;
+}
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+  }
+
 .navbar {
-    background-color: red;
+    background-color: #F1F1F1;
     width: 100%;
+    padding: 12px;
+    border-bottom: solid 1px black;
 }
 
 .nav-container {
     padding: 5px;
+}
+
+.options-controls button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+    width: 200px;
+  }
+  
+.options-controls img {
+    width: 24px; /* Taille de l'icône */
+    height: 24px;
+    margin-right: 10px; /* Espace entre l'image et le texte */
+  }
+  
+.options-controls span {
+    font-size: 16px; /* Taille du texte */
+    color: #333; /* Couleur du texte */
+    font-weight: bold;
+}
+
+.container {
+    margin-top: 20px;
 }
 
 .item-container {
@@ -38,36 +92,6 @@ body {
     align-items: center;   
 }
 
-.windows-10-setup {
-    width: 200px;
-    height: 50px;
-    background-color: #0078D6;
-    border: none;
-    border-radius: 5px;
-}
-.windows-10-setup:hover {
-    background-color: #2272af;
-}
-
-.windows-11-setup {
-    width: 200px;
-    height: 50px;
-    background-color: #4EB2FF;
-    border: none;
-    border-radius: 5px;
-}
-.windows-11-setup:hover {
-    background-color: rgb(67, 130, 179);
-}
-
-.drivers-setup {
-    width: 200px;
-    height: 50px;
-    background-color: #664EFF;
-    border: none;
-    border-radius: 5px;
-}
-
 .components-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -81,7 +105,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     border-left: 5px solid red;
-    width: 890px;
+    width: 700px;
 }
 
 .component-card:hover {
